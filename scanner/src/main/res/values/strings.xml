@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ScanEvrythng</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">ScanEvrythng!</string>
+    <string name="start_scanning_intro_text">Use the below option to scan things around you and upload them via the Evrythng API</string>
+    <string name="start_scanning_button_txt">Start Scanning!</string>
+    <string name="show_list_intro_text">Use the below option to list everything stored in your Evrythng account.</string>
+    <string name="show_list_of_thngs_button_text">Show Me Thngs!</string>
+
+    <!-- Scanning Screen -->
+
+
+    <!-- List of Thngs Screen -->
+
+
+    <!-- Thng Details Screen -->
+
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="title_activity_thng_list">ThngListActivity</string>
+
+    <!-- Configuration Settings -->
+    <string name="evrythng_protocol">http://</string>
+    <string name="evrythng_base_url">api.evrythng.com</string>
+    <string name="evrythng_access_token">{evrythng_access_token_goes_here}</string>
+
+    <string name="scandit_protocol">https://</string>
+    <string name="scandit_base_url">api.scandit.com/v2/products</string>
+    <string name="scandit_application_key">{application_api_key_goes_here}</string>
+    <string name="scandit_product_api_key">{product_api_key_goes_here}</string>
+
+</resources>
