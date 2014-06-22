@@ -1,5 +1,6 @@
 package com.mike.scanevrythng.scanner.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.mike.scanevrythng.scanner.R;
+import com.mike.scanevrythng.scanner.service.EvrythngService;
 import com.mirasense.scanditsdk.ScanditSDKAutoAdjustingBarcodePicker;
 import com.mirasense.scanditsdk.interfaces.ScanditSDKListener;
 import org.apache.http.HttpResponse;
@@ -39,37 +41,29 @@ public class ScanActivity extends ActionBarActivity implements ScanditSDKListene
 	    barcodePicker.getOverlayView().addListener(this);
 
 	    setContentView(barcodePicker);
-
-	    //barcodePicker.startScanning();
     }
 
 	@Override
 	public void onResume() {
 		Log.i(TAG, "In onResume method");
-		//mPicker.startScanning();
 		barcodePicker.startScanning();
 		super.onResume();
 	}
 
 	@Override
 	public void onPause() {
-		//mPicker.stopScanning();
 		barcodePicker.stopScanning();
 		super.onPause();
 	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.scan, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -78,12 +72,8 @@ public class ScanActivity extends ActionBarActivity implements ScanditSDKListene
     }
 
 	@Override
-	public void didScanBarcode(String s, String s2) {
-		// Called when a barcode is scanned
-		Log.i(TAG, "String 1: " + s);
-		Log.i(TAG, "String 2: " + s2);
-
-		new ScanditCaller().execute(s, s2);
+	public void didScanBarcode(String barcode, String barcodeType) {
+		new ScanditCaller().execute(barcode, barcodeType);
 	}
 
 	@Override
@@ -93,9 +83,7 @@ public class ScanActivity extends ActionBarActivity implements ScanditSDKListene
 	}
 
 	@Override
-	public void didCancel() {
-		// deprecated
-	}
+	public void didCancel() {}
 
 	// Private Class to call the Scandit Service
 	private class ScanditCaller extends AsyncTask<String, String, String> {
@@ -127,6 +115,16 @@ public class ScanActivity extends ActionBarActivity implements ScanditSDKListene
 					String line;
 					while ((line = reader.readLine()) != null) {
 						builder.append(line);
+					}
+
+					Intent thngPostIntent = new Intent(ScanActivity.this, EvrythngService.class);
+					if (builder.toString().length() > 2) {
+						thngPostIntent.putExtra("product", builder.toString());
+						Log.i(TAG, "Starting IntentService");
+						startService(thngPostIntent);
+					}
+					else {
+						Log.e(TAG, "Respoonse form Scandit is empty product");
 					}
 				}
 				else {

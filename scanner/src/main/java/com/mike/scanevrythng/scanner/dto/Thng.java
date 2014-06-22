@@ -11,7 +11,9 @@ public class Thng {
 	private String id;
 	private String name;
 	private String description;
+	private ThngLocation location;
 	private List<String> tags;
+	private Map<String, String> properties;
 	private Map<String, String> customFields;
 	private Date createdAt;
 	private Date updatedAt;
@@ -60,6 +62,22 @@ public class Thng {
 		this.customFields = customFields;
 	}
 
+	public ThngLocation getLocation() {
+		return location;
+	}
+
+	public Map<String, String> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Map<String, String> properties) {
+		this.properties = properties;
+	}
+
+	public void setLocation(ThngLocation location) {
+		this.location = location;
+	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -74,5 +92,9 @@ public class Thng {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String toString() {
+		return this.name + " (" + this.description + ")";
 	}
 }
