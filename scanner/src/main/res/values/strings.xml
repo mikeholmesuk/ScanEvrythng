@@ -16,7 +16,8 @@
 
 
     <!-- List of Thngs Screen -->
-
+    <string name="show_list_title">List Of Thngs</string>
+    <string name="show_list_empty_list">No Thngs to be found here. Why not scan some to create some?</string>
 
     <!-- Thng Details Screen -->
 
@@ -24,13 +25,13 @@
     <string name="title_activity_thng_list">ThngListActivity</string>
 
     <!-- Configuration Settings -->
-    <string name="evrythng_protocol">http://</string>
+    <string name="evrythng_protocol">https://</string>
     <string name="evrythng_base_url">api.evrythng.com</string>
-    <string name="evrythng_access_token">{evrythng_access_token_goes_here}</string>
+    <string name="evrythng_access_token">KXokQH4iiDvmjMM4jxOsLr3QYnumUZ1wxeG0dAxTxFOUrUDNpTnYiq9T3OpaIiAKycGovwfD8Ov7i3IV</string>
 
     <string name="scandit_protocol">https://</string>
     <string name="scandit_base_url">api.scandit.com/v2/products</string>
-    <string name="scandit_application_key">{application_api_key_goes_here}</string>
-    <string name="scandit_product_api_key">{product_api_key_goes_here}</string>
+    <string name="scandit_application_key">NSb/zvhhEeOPm/AsuKmjaMdnE9K/BW0IbMKk5NNbOcE</string>
+    <string name="scandit_product_api_key">QCxAFKqqpvcYUAlmiSU2-pUOPj6_bqK8cVVdNuCuO2T</string>
 
 </resources>
